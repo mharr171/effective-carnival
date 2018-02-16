@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   scope 'api' do
-    resources :drinks
+    resources :drinks do
+      resources :ingredients, only: [:create]
+    end
+
+    resources :ingredients, only: [:update,:destroy]
   end
 end
